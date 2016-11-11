@@ -93,7 +93,7 @@
       "check-type"
     ],
 
-    "directive-selector-prefix": [true, "app"],
+    "directive-selector-prefix": [false],
     "component-selector-prefix": [true, "app"],
     "directive-selector-name": [true, "camelCase"],
     "component-selector-name": [true, "kebab-case"],
