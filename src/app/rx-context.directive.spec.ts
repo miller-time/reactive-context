@@ -8,11 +8,9 @@ import { RxContextDirective } from './rx-context.directive';
 @Component({
   selector: 'app-test-component',
   template: `
-    <div *rxContext="let state on stateStream"></div>
-
-    <template rxContext [rxContextOn]="stateStream" let-state>
+    <div *rxContext="let state on stateStream">
       <p>{{state}}</p>
-    </template>
+    </div>
   `
 })
 class TestRxComponent {
@@ -23,12 +21,8 @@ class TestRxComponent {
   selector: 'app-test-select-component',
   template: `
     <div *rxContext="let upperState on stateStream; select:upper">
-      <h1>{{upperState}}</h1>
+      <p>{{upperState}}</p>
     </div>
-
-    <template rxContext [rxContextOn]="stateStream" let-state>
-      <p>{{state}}</p>
-    </template>
   `
 })
 class TestRxSelectComponent {
@@ -90,8 +84,7 @@ describe('Directive: RxContext', () => {
       component.stateStream = Observable.of('hello');
       fixture.detectChanges();
       let compiled = fixture.debugElement.nativeElement;
-      expect(compiled.querySelector('h1').textContent).toContain('HELLO');
-      expect(compiled.querySelector('p').textContent).toContain('hello');
+      expect(compiled.querySelector('p').textContent).toContain('HELLO');
     }));
   });
 });
